@@ -1,0 +1,182 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <title>lemon导航</title>
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <link rel="stylesheet" href="/layui/css/layui.css"  media="all">
+    <link href="/img/logobig.png" rel="shortcut icon" type="image/png">
+    <link href="/img/logobig.png" rel="apple-touch-icon">
+    <!-- 注意：如果你直接复制所有代码到本地，上述css路径需要改成你本地的 -->
+    <style>
+        .class_cover :hover {
+            opacity: 1;
+        }
+        .grid a{
+            color: #736a6a;
+        }
+    </style>
+</head>
+<body style="font-size: 16px;">
+<!-- 让IE8/9支持媒体查询，从而兼容栅格 -->
+<!--[if lt IE 9]>
+<script src="https://cdn.staticfile.org/html5shiv/r29/html5.min.js"></script>
+<script src="https://cdn.staticfile.org/respond.js/1.4.2/respond.min.js"></script>
+<![endif]-->
+
+    <div class="layui-container">
+        <form class="layui-form" action="">
+            <div class="layui-form-item">
+                <label class="layui-form-label">分组</label>
+                <div class="layui-input-block">
+                    <select name="groupId" id="groupId" lay-verify="" disabled>
+                        <option value="">请选择分组</option>
+                        <option th:each="groupInfo:${groupList}" th:value="${groupInfo.id}" th:text="${groupInfo.groupName}" th:selected="${groupInfo.id == groupId}">wiki</option>
+                    </select>
+                </div>
+            </div>
+            <div class="layui-form-item">
+                <label class="layui-form-label">名称</label>
+                <div class="layui-input-block">
+                    <input type="text" name="name" id="name" required lay-verify="required" placeholder="名称" autocomplete="off" class="layui-input" th:value="${tagInfo?.tagName}" />
+                </div>
+            </div>
+            <div class="layui-form-item">
+                <label class="layui-form-label">链接</label>
+                <div class="layui-input-block">
+                    <!--th:value="${tagInfo?.tagLink}"-->
+                    <input type="text" name="link" id="link" required lay-verify="required" placeholder="链接" autocomplete="off" class="layui-input" th:value="${tagInfo?.tagLink}" />
+                </div>
+            </div>
+            <div class="layui-form-item">
+                <label class="layui-form-label">排序</label>
+                <div class="layui-input-block">
+                    <input type="number" name="sort" id="sort" required lay-verify="required" placeholder="排序" autocomplete="off" class="layui-input" th:value="${tagInfo?.sort}" />
+                </div>
+            </div>
+            <input type="hidden" th:value="${tagId}" id="tagId"/>
+            <div class="layui-form-item">
+                <div class="layui-input-block">
+                    <button type="button" class="layui-btn layui-btn-primary" onclick="addTag()">提交</button>
+                    <button type="button" class="layui-btn layui-btn-danger" onclick="deleteTag()">
+                        删除
+                    </button>
+                </div>
+            </div>
+        </form>
+
+    </div>
+
+<script src="/layui/layui.all.js" charset="utf-8"></script>
+<!-- 注意：如果你直接复制所有代码到本地，上述js路径需要改成你本地的 -->
+<script>
+    ;!function(){
+        var layer = layui.layer
+            ,form = layui.form;
+
+        // layer.msg('Hello World');
+    }();
+
+    function addTag() {
+        var $ = layui.jquery;
+        var name = $("#name").val();
+        var tagId = $("#tagId").val();
+        var link = $("#link").val();
+        var sort = $("#sort").val();
+        var groupId = $("#groupId").val();
+        $.post("/tag/addTag",{
+                tagName:name,
+                tagId:tagId,
+                tagLink:link,
+                sort:sort,
+                groupId:groupId
+            },
+            function(data){
+                if (data.code === 0) {
+                    layer.closeAll();
+                    layer.msg('提交成功');
+                    setTimeout(function () {
+                        parent.location.reload();
+                    }, 2000);
+
+                } else {
+                    layer.msg('网络出了问题');
+                }
+            }
+        );
+    }
+
+    function deleteTag() {
+        var $ = layui.jquery;
+        var tagId = $("#tagId").val();
+        $.post("/tag/deleteTag",{
+                tagId:tagId
+            },
+            function(data){
+                if (data.code === 0) {
+                    layer.closeAll();
+                    layer.msg('删除成功');
+                    setTimeout(function () {
+                        parent.location.reload();
+                    }, 2000);
+
+                } else {
+                    layer.msg('网络出了问题');
+                }
+            }
+        );
+    }
+
+    layui.use('layer', function() { //独立版的layer无需执行这一句
+        var $ = layui.jquery, layer = layui.layer; //独立版的layer无需执行这一句
+
+        //触发事件
+        var active = {
+            notice: function(){
+                //示范一个公告层
+                layer.open({
+                    type: 1
+                    ,title: false //不显示标题栏
+                    ,closeBtn: false
+                    ,area: '300px;'
+                    ,shade: 0.8
+                    ,id: 'LAY_layuipro' //设定一个id，防止重复弹出
+                    ,btn: ['勾搭一下', '不给机会']
+                    ,btnAlign: 'c'
+                    ,moveType: 1 //拖拽模式，0或者1
+                    ,content: '<div style="padding: 50px; line-height: 22px; background-color: #393D49; color: #fff; font-weight: 300;">javaer，创业团队三年经验<br><br>若您对笔者感兴趣，请留下您的工作邮箱，我会尽快联系您。<br><br>我们此后的征途是星辰大海 ^_^<br><br><input type="text" name="email" class="layui-input"/><br><a href="daohang.jsp"><small style="color:#bda1a1">简历附件</small></a></div>'
+                    ,success: function(layero){
+                        var btn = layero.find('.layui-layer-btn');
+                        btn.find('.layui-layer-btn0').attr({
+                            href: 'https://blog.javalemon.com/'
+                            ,target: '_blank'
+                        });
+                    }
+                });
+            }
+        }
+
+        $('.layui-btn').on('click', function(){
+            var othis = $(this), method = othis.data('method');
+            active[method] ? active[method].call(this, othis) : '';
+        });
+
+        $('.class_cover').mouseover(function () {
+            $(this).css("opacity","1");
+        }).mouseout(function () {
+            $(this).css("opacity","0");
+        })
+
+        $('#formlinux').submit(function () {
+            window.open("http://wangchujiang.com/linux-command/list.html#!kw=" + $('#linuxkw').val(), "_blank");
+        })
+
+        $("#googlesearch").focus();
+    });
+
+</script>
+
+</body>
+</html>

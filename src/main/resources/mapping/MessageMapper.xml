@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.javalemon.guide.dao.mapper.MessageMapper">
+
+    <insert id="addMessage"  parameterType="com.javalemon.guide.model.dto.MessageDTO" useGeneratedKeys="true" keyProperty="id">
+        insert into guide_message (id, content, sendUserId, sendUserName, receiveUserId, createTime)
+        VALUES (#{id}, #{content}, #{sendUserId}, #{sendUserName}, #{receiveUserId}, #{createTime})
+    </insert>
+
+    <select id="listMessageByReceive" resultType="com.javalemon.guide.model.dto.MessageDTO">
+        select * from guide_message where receiveUserId = #{userId} order by id desc
+    </select>
+
+</mapper>

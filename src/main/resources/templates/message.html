@@ -1,0 +1,102 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <title>lemon导航</title>
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <link rel="stylesheet" href="/layui/css/layui.css"  media="all">
+    <link href="/img/logobig.png" rel="shortcut icon" type="image/png">
+    <link href="/img/logobig.png" rel="apple-touch-icon">
+    <!-- 注意：如果你直接复制所有代码到本地，上述css路径需要改成你本地的 -->
+    <style>
+        .class_cover :hover {
+            opacity: 1;
+        }
+        .grid a{
+            color: #736a6a;
+        }
+    </style>
+</head>
+<body style="font-size: 16px;">
+<!-- 让IE8/9支持媒体查询，从而兼容栅格 -->
+<!--[if lt IE 9]>
+<script src="https://cdn.staticfile.org/html5shiv/r29/html5.min.js"></script>
+<script src="https://cdn.staticfile.org/respond.js/1.4.2/respond.min.js"></script>
+<![endif]-->
+
+    <div class="layui-container">
+        <ul class="layui-timeline">
+            <li class="layui-timeline-item" th:each="message : ${messageList}">
+                <i class="layui-icon layui-timeline-axis">&#xe63f;</i>
+                <div class="layui-timeline-content layui-text">
+                    <h3 class="layui-timeline-title" th:text="${message.date}">8月18日</h3>
+                    <p th:text="${message.content}"></p>
+                </div>
+            </li>
+        </ul>
+
+    </div>
+
+<script src="/layui/layui.all.js" charset="utf-8"></script>
+<!-- 注意：如果你直接复制所有代码到本地，上述js路径需要改成你本地的 -->
+<script>
+    ;!function(){
+        var layer = layui.layer
+            ,form = layui.form;
+
+        // layer.msg('Hello World');
+    }();
+
+    layui.use('layer', function() { //独立版的layer无需执行这一句
+        var $ = layui.jquery, layer = layui.layer; //独立版的layer无需执行这一句
+
+        //触发事件
+        var active = {
+            notice: function(){
+                //示范一个公告层
+                layer.open({
+                    type: 1
+                    ,title: false //不显示标题栏
+                    ,closeBtn: false
+                    ,area: '300px;'
+                    ,shade: 0.8
+                    ,id: 'LAY_layuipro' //设定一个id，防止重复弹出
+                    ,btn: ['勾搭一下', '不给机会']
+                    ,btnAlign: 'c'
+                    ,moveType: 1 //拖拽模式，0或者1
+                    ,content: '<div style="padding: 50px; line-height: 22px; background-color: #393D49; color: #fff; font-weight: 300;">javaer，创业团队三年经验<br><br>若您对笔者感兴趣，请留下您的工作邮箱，我会尽快联系您。<br><br>我们此后的征途是星辰大海 ^_^<br><br><input type="text" name="email" class="layui-input"/><br><a href="daohang.jsp"><small style="color:#bda1a1">简历附件</small></a></div>'
+                    ,success: function(layero){
+                        var btn = layero.find('.layui-layer-btn');
+                        btn.find('.layui-layer-btn0').attr({
+                            href: 'https://blog.javalemon.com/'
+                            ,target: '_blank'
+                        });
+                    }
+                });
+            }
+        }
+
+        $('.layui-btn').on('click', function(){
+            var othis = $(this), method = othis.data('method');
+            active[method] ? active[method].call(this, othis) : '';
+        });
+
+        $('.class_cover').mouseover(function () {
+            $(this).css("opacity","1");
+        }).mouseout(function () {
+            $(this).css("opacity","0");
+        })
+
+        $('#formlinux').submit(function () {
+            window.open("http://wangchujiang.com/linux-command/list.html#!kw=" + $('#linuxkw').val(), "_blank");
+        })
+
+        $("#googlesearch").focus();
+    });
+
+</script>
+
+</body>
+</html>

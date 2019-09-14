@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.javalemon.guide.dao.mapper.UserMapper">
+
+    <insert id="addUser"  parameterType="com.javalemon.guide.model.dto.UserDTO" useGeneratedKeys="true" keyProperty="id">
+        insert into guide_user (name, email, password, createTime)
+        VALUES (#{name}, #{email}, #{password}, #{createTime})
+    </insert>
+
+    <select id="getUser" resultType="com.javalemon.guide.model.dto.UserDTO">
+        select * from guide_user where id = #{userId}
+    </select>
+
+    <select id="getUserByEmail" resultType="com.javalemon.guide.model.dto.UserDTO">
+        select * from guide_user where email = #{email}
+    </select>
+
+</mapper>
