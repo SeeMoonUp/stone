@@ -1,7 +1,7 @@
 package com.javalemon.stone.dao;
 
-import com.javalemon.guide.dao.mapper.MessageMapper;
-import com.javalemon.guide.model.dto.MessageDTO;
+import com.javalemon.stone.dao.mapper.MessageMapper;
+import com.javalemon.stone.model.dto.MessageDTO;
 import org.springframework.stereotype.Repository;
 
 import javax.annotation.Resource;

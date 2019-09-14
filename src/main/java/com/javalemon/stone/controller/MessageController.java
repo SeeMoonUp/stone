@@ -1,11 +1,12 @@
 package com.javalemon.stone.controller;
 
-import com.javalemon.guide.common.Result;
-import com.javalemon.guide.model.MessageVO;
-import com.javalemon.guide.model.dto.MessageDTO;
-import com.javalemon.guide.service.MessageService;
+import com.javalemon.stone.common.Result;
+import com.javalemon.stone.model.MessageVO;
+import com.javalemon.stone.model.dto.MessageDTO;
+import com.javalemon.stone.service.MessageService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;

@@ -1,8 +1,8 @@
 package com.javalemon.stone.service;
 
-import com.javalemon.guide.common.Result;
-import com.javalemon.guide.dao.GroupDao;
-import com.javalemon.guide.model.dto.GroupDTO;
+import com.javalemon.stone.common.Result;
+import com.javalemon.stone.dao.GroupDao;
+import com.javalemon.stone.model.dto.GroupDTO;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;

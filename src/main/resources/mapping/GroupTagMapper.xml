@@ -2,9 +2,9 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<mapper namespace="com.javalemon.guide.dao.mapper.GroupTagMapper">
+<mapper namespace="com.javalemon.stone.dao.mapper.GroupTagMapper">
 
-    <insert id="addGroupTag"  parameterType="com.javalemon.guide.model.dto.GroupTagDTO" useGeneratedKeys="true" keyProperty="id">
+    <insert id="addGroupTag"  parameterType="com.javalemon.stone.model.dto.GroupTagDTO" useGeneratedKeys="true" keyProperty="id">
         insert into guide_group_tag (userId, groupId, groupName, tagName, tagLink, sort, status, createTime)
         VALUES (#{userId}, #{groupId}, #{groupName}, #{tagName}, #{tagLink}, #{sort}, #{status}, #{createTime})
     </insert>
@@ -17,11 +17,11 @@
         update guide_group_tag set tagName = #{tagName}, tagLink = #{tagLink}, sort = #{sort} where id = #{tagId};
     </update>
 
-    <select id="listGroupTag" resultType="com.javalemon.guide.model.dto.GroupTagDTO" parameterType="map">
+    <select id="listGroupTag" resultType="com.javalemon.stone.model.dto.GroupTagDTO" parameterType="map">
         select * from guide_group_tag where status =  1 and userId = #{userId} and groupId = #{groupId} order by sort desc
     </select>
 
-    <select id="getTag" resultType="com.javalemon.guide.model.dto.GroupTagDTO">
+    <select id="getTag" resultType="com.javalemon.stone.model.dto.GroupTagDTO">
         select * from guide_group_tag where status =  1 and id = #{tagId} order by sort desc
     </select>
 

@@ -1,6 +1,6 @@
 package com.javalemon.stone.controller;
 
-import com.javalemon.guide.common.utils.web.CookieUtils;
+import com.javalemon.stone.common.utils.web.CookieUtils;
 import org.apache.commons.lang.math.NumberUtils;
 
 import javax.servlet.http.HttpServletRequest;

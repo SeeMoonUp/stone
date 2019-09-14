@@ -1,12 +1,12 @@
 package com.javalemon.stone.controller;
 
-import com.javalemon.guide.common.Result;
-import com.javalemon.guide.model.dto.GroupDTO;
-import com.javalemon.guide.model.dto.GroupTagDTO;
-import com.javalemon.guide.model.vo.GroupTagInfoVO;
-import com.javalemon.guide.model.vo.GroupTagVO;
-import com.javalemon.guide.service.GroupService;
-import com.javalemon.guide.service.GroupTagService;
+import com.javalemon.stone.common.Result;
+import com.javalemon.stone.model.dto.GroupDTO;
+import com.javalemon.stone.model.dto.GroupTagDTO;
+import com.javalemon.stone.model.vo.GroupTagInfoVO;
+import com.javalemon.stone.model.vo.GroupTagVO;
+import com.javalemon.stone.service.GroupService;
+import com.javalemon.stone.service.GroupTagService;
 import lombok.Data;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Configuration;

@@ -1,7 +1,7 @@
 package com.javalemon.stone.dao;
 
-import com.javalemon.guide.dao.mapper.GroupTagMapper;
-import com.javalemon.guide.model.dto.GroupTagDTO;
+import com.javalemon.stone.dao.mapper.GroupTagMapper;
+import com.javalemon.stone.model.dto.GroupTagDTO;
 import org.springframework.stereotype.Repository;
 
 import javax.annotation.Resource;

@@ -1,8 +1,8 @@
 package com.javalemon.stone.controller;
 
-import com.javalemon.guide.common.Result;
-import com.javalemon.guide.model.dto.GroupDTO;
-import com.javalemon.guide.service.GroupService;
+import com.javalemon.stone.common.Result;
+import com.javalemon.stone.model.dto.GroupDTO;
+import com.javalemon.stone.service.GroupService;
 import org.apache.commons.lang.StringUtils;
 import org.apache.commons.lang.math.NumberUtils;
 import org.springframework.stereotype.Controller;

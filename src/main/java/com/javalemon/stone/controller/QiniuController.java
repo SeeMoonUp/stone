@@ -1,7 +1,7 @@
 package com.javalemon.stone.controller;
 
-import com.javalemon.guide.common.Result;
-import com.javalemon.guide.model.vo.qiniu.QiniuToken;
+import com.javalemon.stone.common.Result;
+import com.javalemon.stone.model.vo.qiniu.QiniuToken;
 import com.qiniu.util.Auth;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.stereotype.Controller;

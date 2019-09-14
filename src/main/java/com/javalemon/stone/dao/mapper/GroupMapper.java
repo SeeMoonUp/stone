@@ -1,6 +1,6 @@
 package com.javalemon.stone.dao.mapper;
 
-import com.javalemon.guide.model.dto.GroupDTO;
+import com.javalemon.stone.model.dto.GroupDTO;
 import org.apache.ibatis.annotations.Param;
 
 import java.util.List;

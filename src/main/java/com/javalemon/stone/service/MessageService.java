@@ -1,9 +1,9 @@
 package com.javalemon.stone.service;
 
-import com.javalemon.guide.common.Result;
-import com.javalemon.guide.dao.MessageDao;
-import com.javalemon.guide.model.MessageVO;
-import com.javalemon.guide.model.dto.MessageDTO;
+import com.javalemon.stone.common.Result;
+import com.javalemon.stone.dao.MessageDao;
+import com.javalemon.stone.model.MessageVO;
+import com.javalemon.stone.model.dto.MessageDTO;
 import org.joda.time.DateTime;
 import org.springframework.stereotype.Service;
 

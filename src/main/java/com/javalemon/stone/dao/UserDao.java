@@ -1,7 +1,7 @@
 package com.javalemon.stone.dao;
 
-import com.javalemon.guide.dao.mapper.UserMapper;
-import com.javalemon.guide.model.dto.UserDTO;
+import com.javalemon.stone.dao.mapper.UserMapper;
+import com.javalemon.stone.model.dto.UserDTO;
 import org.springframework.stereotype.Repository;
 
 import javax.annotation.Resource;

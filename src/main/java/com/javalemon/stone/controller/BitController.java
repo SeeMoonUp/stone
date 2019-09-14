@@ -1,7 +1,7 @@
 package com.javalemon.stone.controller;
 
-import com.javalemon.guide.common.Result;
-import com.javalemon.guide.model.vo.bit.WeekHotVO;
+import com.javalemon.stone.common.Result;
+import com.javalemon.stone.model.vo.bit.WeekHotVO;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PostMapping;

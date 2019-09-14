@@ -1,6 +1,6 @@
 package com.javalemon.stone.dao.mapper;
 
-import com.javalemon.guide.model.dto.UserDTO;
+import com.javalemon.stone.model.dto.UserDTO;
 
 /**
  *
