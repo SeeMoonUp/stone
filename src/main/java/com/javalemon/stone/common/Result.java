@@ -48,6 +48,7 @@ public class Result<T> {
         NO_TAG_ERROR(4, "没有找到对应的标签信息"),
         NO_LOGIN(5, "未登录"),
         PASS_ERROR(6, "密码或用户名错误"),
+        PARAM_ERROR(7, "参数错误"),
         ;
 
         private int code;

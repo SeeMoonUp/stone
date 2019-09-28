@@ -42,6 +42,15 @@ CREATE TABLE `guide_group` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;
 
+#视频表
+CREATE TABLE `guide_video` (
+  `id` int(32) NOT NULL AUTO_INCREMENT,
+  `title` VARCHAR(128) NOT NULL,
+  `qiniuKey` VARCHAR(64) NOT NULL,
+  `createTime` DATETIME NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;
+
 #用户分组明细表
 CREATE TABLE `guide_group_tag` (
   `id` int(32) NOT NULL AUTO_INCREMENT,
