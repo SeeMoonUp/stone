@@ -4,6 +4,7 @@ import com.javalemon.stone.common.Result;
 import com.javalemon.stone.model.dto.VideoDTO;
 import com.javalemon.stone.service.VideoService;
 import org.apache.commons.lang.StringUtils;
+import org.joda.time.DateTime;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -31,11 +32,15 @@ public class VideoController {
 
     @PostMapping("save")
     @ResponseBody
-    public Result save(HttpServletRequest request,  @RequestParam String qiniuKey,  @RequestParam String title) {
+    public Result save(HttpServletRequest request) {
+
+        String qiniuKey = StringUtils.trimToEmpty(request.getParameter("qiniuKey"));
+        String title = StringUtils.trimToEmpty(request.getParameter("title"));
+
         if (StringUtils.isBlank(qiniuKey) || StringUtils.isBlank(title)) {
             return Result.error(Result.CodeEnum.PARAM_ERROR);
         }
-        VideoDTO videoDTO = VideoDTO.builder().qiniuKey(qiniuKey).title(title).build();
+        VideoDTO videoDTO = VideoDTO.builder().qiniuKey(qiniuKey).title(title).createTime(DateTime.now().toDate()).build();
         Result result= videoService.addVideo(videoDTO);
         if (result.isSuccess()) {
             return Result.success(Result.CodeEnum.SUCCESS);
