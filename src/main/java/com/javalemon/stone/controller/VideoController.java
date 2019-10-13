@@ -7,14 +7,12 @@ import org.apache.commons.lang.StringUtils;
 import org.joda.time.DateTime;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import java.util.List;
+import java.util.Map;
 
 /**
  * @author lemon
@@ -32,10 +30,10 @@ public class VideoController {
 
     @PostMapping("save")
     @ResponseBody
-    public Result save(HttpServletRequest request) {
+    public Result save(HttpServletRequest request, @RequestBody Map<String, String> map) {
 
-        String qiniuKey = StringUtils.trimToEmpty(request.getParameter("qiniuKey"));
-        String title = StringUtils.trimToEmpty(request.getParameter("title"));
+        String qiniuKey = map.get("qiniuKey");
+        String title = map.get("title");
 
         if (StringUtils.isBlank(qiniuKey) || StringUtils.isBlank(title)) {
             return Result.error(Result.CodeEnum.PARAM_ERROR);
