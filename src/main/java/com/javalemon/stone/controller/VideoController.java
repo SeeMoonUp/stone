@@ -2,6 +2,7 @@ package com.javalemon.stone.controller;
 
 import com.javalemon.stone.common.Result;
 import com.javalemon.stone.model.dto.VideoDTO;
+import com.javalemon.stone.model.vo.video.VideoListVO;
 import com.javalemon.stone.service.VideoService;
 import org.apache.commons.lang.StringUtils;
 import org.joda.time.DateTime;
@@ -53,7 +54,11 @@ public class VideoController {
 
         Result<List<VideoDTO>> videosRes = videoService.listVideo();
         if (videosRes.isSuccess()) {
-            return Result.success(videosRes.getData());
+            VideoListVO data = VideoListVO.builder()
+                    .items(videosRes.getData())
+                    .total(videosRes.getData().size())
+                    .build();
+            return Result.success(data);
         }
 
         return Result.error(Result.CodeEnum.SERVICE_ERROR);
