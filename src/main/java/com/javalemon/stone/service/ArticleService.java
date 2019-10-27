@@ -44,6 +44,8 @@ public class ArticleService {
             List<ArticleVideoDTO> videoDTOS = articleDao.listArticleVideo();
             return Result.success(videoDTOS);
         } catch (Exception e) {
+            e.printStackTrace();
+            LOGGER.error("listArticleVideo error", e);
             return Result.error(Result.CodeEnum.SERVICE_ERROR);
         }
     }
