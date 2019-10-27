@@ -1,8 +1,11 @@
 package com.javalemon.stone.controller;
 
 import com.javalemon.stone.common.Result;
+import com.javalemon.stone.model.dto.ArticleVideoDTO;
 import com.javalemon.stone.model.dto.VideoDTO;
+import com.javalemon.stone.model.vo.article.ArticleVideoListVO;
 import com.javalemon.stone.model.vo.video.VideoListVO;
+import com.javalemon.stone.service.ArticleService;
 import com.javalemon.stone.service.VideoService;
 import org.apache.commons.lang.StringUtils;
 import org.joda.time.DateTime;
@@ -30,13 +33,14 @@ import java.util.Map;
 public class ArticleController {
 
     @Resource
-    VideoService videoService;
+    ArticleService articleService;
 
     @PostMapping("save")
     @ResponseBody
-    public Result save(HttpServletRequest request, @RequestBody Map<String, String> map) {
+    public Result save(@RequestBody ArticleVideoDTO articleVideoDTO) {
 
-        if (true) {
+        Result result = articleService.addArticleVideo(articleVideoDTO);
+        if (result.isSuccess()) {
             return Result.success(Result.CodeEnum.SUCCESS);
         }
 
@@ -47,9 +51,9 @@ public class ArticleController {
     @ResponseBody
     public Result list(HttpServletRequest request) {
 
-        Result<List<VideoDTO>> videosRes = videoService.listVideo();
+        Result<List<ArticleVideoDTO>> videosRes = articleService.listArticleVideo();
         if (videosRes.isSuccess()) {
-            VideoListVO data = VideoListVO.builder()
+            ArticleVideoListVO data = ArticleVideoListVO.builder()
                     .items(videosRes.getData())
                     .total(videosRes.getData().size())
                     .build();

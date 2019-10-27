@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.javalemon.stone.dao.mapper.ArticleMapper">
+
+    <insert id="addArticleVideo"  parameterType="com.javalemon.stone.model.dto.ArticleVideoDTO" useGeneratedKeys="true" keyProperty="id">
+        insert into guide_article_video (id, videoId, title, mdContent, content, desc, displayTime, importance, likeNum, viewNum)
+        VALUES (#{id}, #{videoId}, #{title}, #{mdContent}, #{content}, #{desc}, #{displayTime}, #{importance}, #{likeNum})
+    </insert>
+
+    <select id="listArticleVideo" resultType="com.javalemon.stone.model.dto.ArticleVideoDTO">
+        select * from guide_article_video order by id desc
+    </select>
+
+</mapper>
