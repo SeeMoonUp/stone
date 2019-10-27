@@ -43,4 +43,13 @@ public class VideoService {
             return Result.error(Result.CodeEnum.SERVICE_ERROR);
         }
     }
+
+    public Result<List<VideoDTO>> searchList(String keyword) {
+        try {
+            List<VideoDTO> videoDTOS = videoDao.searchList(keyword);
+            return Result.success(videoDTOS);
+        } catch (Exception e) {
+            return Result.error(Result.CodeEnum.SERVICE_ERROR);
+        }
+    }
 }

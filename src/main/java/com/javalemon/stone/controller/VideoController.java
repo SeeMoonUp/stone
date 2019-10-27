@@ -63,4 +63,20 @@ public class VideoController {
 
         return Result.error(Result.CodeEnum.SERVICE_ERROR);
     }
+
+    @PostMapping("searchList")
+    @ResponseBody
+    public Result searchList(HttpServletRequest request, @RequestParam String keyword) {
+
+        if (StringUtils.isBlank(keyword)) {
+            return list(request);
+        }
+
+        Result<List<VideoDTO>> videosRes = videoService.searchList(keyword);
+        if (videosRes.isSuccess()) {
+            return videosRes;
+        }
+
+        return Result.error(Result.CodeEnum.SERVICE_ERROR);
+    }
 }

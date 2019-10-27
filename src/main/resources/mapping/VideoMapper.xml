@@ -13,4 +13,8 @@
         select * from guide_video order by id desc
     </select>
 
+    <select id="searchList" resultType="com.javalemon.stone.model.dto.VideoDTO">
+        select * from guide_video where title like "%"#{keyword}"%" order by id desc
+    </select>
+
 </mapper>

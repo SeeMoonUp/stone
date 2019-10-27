@@ -1,8 +1,6 @@
 package com.javalemon.stone.dao;
 
-import com.javalemon.stone.dao.mapper.GroupMapper;
 import com.javalemon.stone.dao.mapper.VideoMapper;
-import com.javalemon.stone.model.dto.GroupDTO;
 import com.javalemon.stone.model.dto.VideoDTO;
 import org.springframework.stereotype.Repository;
 
@@ -28,4 +26,7 @@ public class VideoDao {
         return videoMapper.addVideo(videoDTO);
     }
 
+    public List<VideoDTO> searchList(String keyword) {
+        return videoMapper.searchList(keyword);
+    }
 }

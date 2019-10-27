@@ -12,4 +12,6 @@ public interface VideoMapper {
     int addVideo(VideoDTO videoDTO);
 
     List<VideoDTO> listVideo();
+
+    List<VideoDTO> searchList(String keyword);
 }
