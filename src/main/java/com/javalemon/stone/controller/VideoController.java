@@ -66,7 +66,7 @@ public class VideoController {
 
     @PostMapping("searchList")
     @ResponseBody
-    public Result searchList(HttpServletRequest request, @RequestParam String keyword) {
+    public Result searchList(HttpServletRequest request, @RequestBody String keyword) {
 
         if (StringUtils.isBlank(keyword)) {
             return list(request);
