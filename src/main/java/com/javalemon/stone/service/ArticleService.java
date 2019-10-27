@@ -33,6 +33,7 @@ public class ArticleService {
                 return Result.error(Result.CodeEnum.DAO_ERROR);
             }
         } catch (Exception e) {
+            e.printStackTrace();
             LOGGER.error("addArticleVideo error", e);
             return Result.error(Result.CodeEnum.SERVICE_ERROR);
         }
