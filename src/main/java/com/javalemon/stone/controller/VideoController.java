@@ -66,13 +66,13 @@ public class VideoController {
 
     @PostMapping("searchList")
     @ResponseBody
-    public Result searchList(HttpServletRequest request, @RequestBody String keyword) {
+    public Result searchList(HttpServletRequest request, @RequestBody Map<String, String> param) {
 
-        if (StringUtils.isBlank(keyword)) {
+        if (StringUtils.isBlank(param.get("keyword"))) {
             return list(request);
         }
 
-        Result<List<VideoDTO>> videosRes = videoService.searchList(keyword);
+        Result<List<VideoDTO>> videosRes = videoService.searchList(param.get("keyword"));
         if (videosRes.isSuccess()) {
             return videosRes;
         }
