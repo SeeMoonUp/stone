@@ -1,14 +1,11 @@
 package com.javalemon.stone.controller;
 
 import com.javalemon.stone.common.Result;
+import com.javalemon.stone.common.utils.web.CookieUtils;
 import com.javalemon.stone.model.dto.ArticleVideoDTO;
-import com.javalemon.stone.model.dto.VideoDTO;
 import com.javalemon.stone.model.vo.article.ArticleVideoListVO;
-import com.javalemon.stone.model.vo.video.VideoListVO;
 import com.javalemon.stone.service.ArticleService;
-import com.javalemon.stone.service.VideoService;
-import org.apache.commons.lang.StringUtils;
-import org.joda.time.DateTime;
+import org.slf4j.Logger;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -19,7 +16,6 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import java.util.List;
-import java.util.Map;
 
 /**
  * @author lemon
@@ -31,6 +27,8 @@ import java.util.Map;
 @Configuration
 @RequestMapping("article")
 public class ArticleController {
+
+    private static final org.apache.log4j.Logger LOGGER = org.apache.log4j.Logger.getLogger(ArticleController.class.getName());
 
     @Resource
     ArticleService articleService;

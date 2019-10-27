@@ -1,6 +1,7 @@
 package com.javalemon.stone.service;
 
 import com.javalemon.stone.common.Result;
+import com.javalemon.stone.controller.ArticleController;
 import com.javalemon.stone.dao.ArticleDao;
 import com.javalemon.stone.dao.VideoDao;
 import com.javalemon.stone.model.dto.ArticleVideoDTO;
@@ -18,6 +19,7 @@ import java.util.List;
 
 @Service
 public class ArticleService {
+    private static final org.apache.log4j.Logger LOGGER = org.apache.log4j.Logger.getLogger(ArticleService.class.getName());
 
     @Resource
     private ArticleDao articleDao;
@@ -31,6 +33,7 @@ public class ArticleService {
                 return Result.error(Result.CodeEnum.DAO_ERROR);
             }
         } catch (Exception e) {
+            LOGGER.error("addArticleVideo error", e);
             return Result.error(Result.CodeEnum.SERVICE_ERROR);
         }
     }
