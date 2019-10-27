@@ -1,8 +1,10 @@
 package com.javalemon.stone;
 
 import com.javalemon.stone.common.Result;
+import com.javalemon.stone.model.dto.ArticleVideoDTO;
 import com.javalemon.stone.model.dto.GroupTagDTO;
 import com.javalemon.stone.model.dto.VideoDTO;
+import com.javalemon.stone.service.ArticleService;
 import com.javalemon.stone.service.VideoService;
 import org.joda.time.DateTime;
 import org.junit.Test;
@@ -21,6 +23,9 @@ public class StoneApplicationTests {
 	@Resource
 	VideoService videoService;
 
+	@Resource
+	ArticleService articleService;
+
 	@Test
 	public void contextLoads() {
 	}
@@ -34,6 +39,17 @@ public class StoneApplicationTests {
 	@Test
 	public void testListVideo() {
 		Result result = videoService.listVideo();
+		System.out.println(result);
+	}
+	@Test
+	public void testArticle() {
+		Result result = articleService.addArticleVideo(
+				ArticleVideoDTO.builder()
+						.content("123")
+						.mdContent("234")
+						.likeNum(1)
+						.viewNum(1).build()
+		);
 		System.out.println(result);
 	}
 

@@ -1,6 +1,7 @@
 package com.javalemon.stone.model.dto;
 
 
+import lombok.Builder;
 import lombok.Data;
 
 import java.util.Date;
@@ -11,6 +12,7 @@ import java.util.Date;
  * @desc
  */
 
+@Builder
 @Data
 public class ArticleVideoDTO {
 
