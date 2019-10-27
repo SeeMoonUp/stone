@@ -63,7 +63,7 @@ CREATE TABLE `guide_article_video` (
   `importance` VARCHAR(128) NOT NULL,
   `likeNum` VARCHAR(128) NOT NULL,
   `viewNum` VARCHAR(128) NOT NULL,
-  `createTime` DATETIME NOT NULL DEFAULT now(),
+  `createTime` DATETIME DEFAULT now(),
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;
 

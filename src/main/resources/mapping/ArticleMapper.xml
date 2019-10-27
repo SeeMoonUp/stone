@@ -6,7 +6,7 @@
 
     <insert id="addArticleVideo"  parameterType="com.javalemon.stone.model.dto.ArticleVideoDTO" useGeneratedKeys="true" keyProperty="id">
         insert into guide_article_video (id, videoId, title, mdContent, content, desc, displayTime, importance, likeNum, viewNum)
-        VALUES (#{id}, #{videoId}, #{title}, #{mdContent}, #{content}, #{desc}, #{displayTime}, #{importance}, #{likeNum})
+        VALUES (#{id}, #{videoId}, #{title}, #{mdContent}, #{content}, #{desc}, #{displayTime}, #{importance}, #{likeNum}, #{viewNum})
     </insert>
 
     <select id="listArticleVideo" resultType="com.javalemon.stone.model.dto.ArticleVideoDTO">
