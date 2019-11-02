@@ -60,4 +60,19 @@ public class ArticleService {
             return Result.error(Result.CodeEnum.SERVICE_ERROR);
         }
     }
+
+    public Result updateArticleVideo(ArticleVideoDTO articleVideoDTO) {
+        try {
+            int res = articleDao.updateArticleVideo(articleVideoDTO);
+            if (res >= 0) {
+                return Result.success();
+            } else {
+                return Result.error(Result.CodeEnum.DAO_ERROR);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+            LOGGER.error("updateArticleVideo error", e);
+            return Result.error(Result.CodeEnum.SERVICE_ERROR);
+        }
+    }
 }

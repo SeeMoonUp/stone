@@ -9,6 +9,19 @@
         VALUES (#{id}, #{videoId}, #{title}, #{mdContent}, #{content}, #{desc}, #{displayTime}, #{importance}, #{likeNum}, #{viewNum})
     </insert>
 
+    <update id="updateArticleVideo"  parameterType="com.javalemon.stone.model.dto.ArticleVideoDTO">
+        update guide_article_video set
+        title = #{title},
+        mdContent = #{mdContent},
+        content = #{content},
+        `desc` = #{desc},
+        displayTime = #{displayTime},
+        importance = #{importance},
+        likeNum = #{likeNum},
+        viewNum = #{viewNum}
+        where id = #{id}
+    </update>
+
     <select id="listArticleVideo" resultType="com.javalemon.stone.model.dto.ArticleVideoDTO">
         select * from guide_article_video order by id desc
     </select>

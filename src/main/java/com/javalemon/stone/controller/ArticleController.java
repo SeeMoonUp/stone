@@ -39,9 +39,16 @@ public class ArticleController {
     @ResponseBody
     public Result save(@RequestBody ArticleVideoDTO articleVideoDTO) {
 
-        Result result = articleService.addArticleVideo(articleVideoDTO);
-        if (result.isSuccess()) {
-            return Result.success(Result.CodeEnum.SUCCESS);
+        if (articleVideoDTO.getId() == 0) {
+            Result result = articleService.addArticleVideo(articleVideoDTO);
+            if (result.isSuccess()) {
+                return Result.success(Result.CodeEnum.SUCCESS);
+            }
+        } else {
+            Result result =  articleService.updateArticleVideo(articleVideoDTO);
+            if (result.isSuccess()) {
+                return Result.success(Result.CodeEnum.SUCCESS);
+            }
         }
 
         return Result.error(Result.CodeEnum.SERVICE_ERROR);

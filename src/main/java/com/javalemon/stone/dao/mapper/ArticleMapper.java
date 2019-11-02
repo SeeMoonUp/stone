@@ -16,4 +16,6 @@ public interface ArticleMapper {
     List<ArticleVideoDTO> listArticleVideo();
 
     ArticleVideoDTO getArticleDetail( @Param("articleId") int articleId);
+
+    int updateArticleVideo(ArticleVideoDTO articleVideoDTO);
 }

@@ -29,4 +29,8 @@ public class ArticleDao {
     public ArticleVideoDTO getArticleDetail(int articleId) {
         return articleMapper.getArticleDetail(articleId);
     }
+
+    public int updateArticleVideo(ArticleVideoDTO articleVideoDTO) {
+        return articleMapper.updateArticleVideo(articleVideoDTO);
+    }
 }
