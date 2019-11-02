@@ -13,4 +13,8 @@
         select * from guide_article_video order by id desc
     </select>
 
+    <select id="getArticleDetail" resultType="com.javalemon.stone.model.dto.ArticleVideoDTO">
+        select * from guide_article_video where id = #{articleId}
+    </select>
+
 </mapper>

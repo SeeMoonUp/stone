@@ -5,6 +5,8 @@ import com.javalemon.stone.common.utils.web.CookieUtils;
 import com.javalemon.stone.model.dto.ArticleVideoDTO;
 import com.javalemon.stone.model.vo.article.ArticleVideoListVO;
 import com.javalemon.stone.service.ArticleService;
+import org.apache.commons.lang.StringUtils;
+import org.apache.commons.lang.math.NumberUtils;
 import org.slf4j.Logger;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.stereotype.Controller;
@@ -56,6 +58,25 @@ public class ArticleController {
                     .total(videosRes.getData().size())
                     .build();
             return Result.success(data);
+        }
+
+        return Result.error(Result.CodeEnum.SERVICE_ERROR);
+    }
+
+    @PostMapping("detail")
+    @ResponseBody
+    public Result detail(HttpServletRequest request) {
+
+        String articleId = StringUtils.trimToEmpty(request.getParameter("articleId"));
+        if (StringUtils.isBlank(articleId)) {
+            return Result.error(Result.CodeEnum.PARAM_ERROR);
+        }
+
+
+        Result<ArticleVideoDTO> result = articleService.getArticleDetail(NumberUtils.toInt(articleId));
+
+        if (result.isSuccess()) {
+            return result;
         }
 
         return Result.error(Result.CodeEnum.SERVICE_ERROR);

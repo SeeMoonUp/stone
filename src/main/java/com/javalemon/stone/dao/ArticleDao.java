@@ -26,4 +26,7 @@ public class ArticleDao {
         return articleMapper.listArticleVideo();
     }
 
+    public ArticleVideoDTO getArticleDetail(int articleId) {
+        return articleMapper.getArticleDetail(articleId);
+    }
 }

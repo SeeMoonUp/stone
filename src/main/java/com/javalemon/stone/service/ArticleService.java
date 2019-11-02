@@ -50,4 +50,14 @@ public class ArticleService {
         }
     }
 
+    public Result<ArticleVideoDTO> getArticleDetail(int articleId) {
+        try {
+            ArticleVideoDTO videoDTO = articleDao.getArticleDetail(articleId);
+            return Result.success(videoDTO);
+        } catch (Exception e) {
+            e.printStackTrace();
+            LOGGER.error("getArticleDetail error", e);
+            return Result.error(Result.CodeEnum.SERVICE_ERROR);
+        }
+    }
 }
