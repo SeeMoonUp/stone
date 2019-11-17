@@ -5,12 +5,12 @@
 <mapper namespace="com.javalemon.stone.dao.mapper.ArticleMapper">
 
     <insert id="addArticleVideo"  parameterType="com.javalemon.stone.model.dto.ArticleVideoDTO" useGeneratedKeys="true" keyProperty="id">
-        insert into guide_article_video (id, videoId, title, mdContent, content, `desc`, displayTime, importance, likeNum, viewNum)
+        insert into bit_article_video (id, videoId, title, mdContent, content, `desc`, displayTime, importance, likeNum, viewNum)
         VALUES (#{id}, #{videoId}, #{title}, #{mdContent}, #{content}, #{desc}, #{displayTime}, #{importance}, #{likeNum}, #{viewNum})
     </insert>
 
     <update id="updateArticleVideo"  parameterType="com.javalemon.stone.model.dto.ArticleVideoDTO">
-        update guide_article_video set
+        update bit_article_video set
         title = #{title},
         mdContent = #{mdContent},
         content = #{content},
@@ -23,11 +23,11 @@
     </update>
 
     <select id="listArticleVideo" resultType="com.javalemon.stone.model.dto.ArticleVideoDTO">
-        select * from guide_article_video order by id desc
+        select * from bit_article_video order by id desc
     </select>
 
     <select id="getArticleDetail" resultType="com.javalemon.stone.model.dto.ArticleVideoDTO">
-        select * from guide_article_video where id = #{articleId}
+        select * from bit_article_video where id = #{articleId}
     </select>
 
 </mapper>

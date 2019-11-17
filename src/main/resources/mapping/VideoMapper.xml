@@ -5,16 +5,16 @@
 <mapper namespace="com.javalemon.stone.dao.mapper.VideoMapper">
 
     <insert id="addVideo"  parameterType="com.javalemon.stone.model.dto.VideoDTO" useGeneratedKeys="true" keyProperty="id">
-        insert into guide_video (id, qiniuKey, title, createTime)
+        insert into bit_video (id, qiniuKey, title, createTime)
         VALUES (#{id}, #{qiniuKey}, #{title}, #{createTime})
     </insert>
 
     <select id="listVideo" resultType="com.javalemon.stone.model.dto.VideoDTO">
-        select * from guide_video order by id desc
+        select * from bit_video order by id desc
     </select>
 
     <select id="searchList" resultType="com.javalemon.stone.model.dto.VideoDTO">
-        select * from guide_video where title like "%"#{keyword}"%" order by id desc
+        select * from bit_video where title like "%"#{keyword}"%" order by id desc
     </select>
 
 </mapper>
