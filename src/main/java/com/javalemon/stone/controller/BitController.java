@@ -23,7 +23,7 @@ import java.util.List;
 @RequestMapping("bit")
 public class BitController extends BaseController{
 
-    @PostMapping("home")
+    @RequestMapping("home")
     @ResponseBody
     public Result home(HttpServletRequest request) {
         List<WeekHotVO> weekHotVOS = new ArrayList<>();
