@@ -26,12 +26,12 @@ public class QiniuController {
     @PostMapping("getToken")
     @ResponseBody
     public Result home(HttpServletRequest request) {
-//        String accessKey = "CM1Xk5INASWuZfY8AX6f5xOVXx4_MlMo7ETRej-J";
-//        String secretKey = "1KuZD2XPAHmQRB9072ZsdwmjF1_uHKtdhuTy60wW";
-//        String bucket = "bit-video";
-        String accessKey = "SPMEgc1PbHuY39zMht0yFJBNZ2dOUlWxbS_geoyN";
-        String secretKey = "lrubqnyUQ0DPTRVRBcDuMTkrlrXAF28tKrG-xurv";
-        String bucket = "bit-video-temp";
+        String accessKey = "CM1Xk5INASWuZfY8AX6f5xOVXx4_MlMo7ETRej-J";
+        String secretKey = "1KuZD2XPAHmQRB9072ZsdwmjF1_uHKtdhuTy60wW";
+        String bucket = "bit-video";
+//        String accessKey = "SPMEgc1PbHuY39zMht0yFJBNZ2dOUlWxbS_geoyN";
+//        String secretKey = "lrubqnyUQ0DPTRVRBcDuMTkrlrXAF28tKrG-xurv";
+//        String bucket = "bit-video-temp";
         Auth auth = Auth.create(accessKey, secretKey);
         String upToken = auth.uploadToken(bucket);
 
