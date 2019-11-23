@@ -4,7 +4,10 @@ import com.javalemon.stone.common.Result;
 import com.javalemon.stone.common.utils.qiniu.QiniuUtils;
 import com.javalemon.stone.model.dto.ArticleVideoDTO;
 import com.javalemon.stone.model.dto.VideoDTO;
+import com.javalemon.stone.model.param.HomePageParam;
 import com.javalemon.stone.model.param.Page;
+import com.javalemon.stone.model.param.PostRequest;
+import com.javalemon.stone.model.param.VideoDetailParam;
 import com.javalemon.stone.model.vo.article.ArticleVideoListVO;
 import com.javalemon.stone.model.vo.bit.ArticleVideoVO;
 import com.javalemon.stone.model.vo.bit.HomePageVO;
@@ -18,6 +21,7 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.stereotype.Controller;
 import org.springframework.util.CollectionUtils;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
@@ -53,9 +57,8 @@ public class BitController extends BaseController {
 
     @RequestMapping("home")
     @ResponseBody
-    public Result home(HttpServletRequest request) {
-
-        int lastVideoIndex = NumberUtils.toInt(request.getParameter("lastVideoIndex"));
+    public Result home(HttpServletRequest request, @RequestBody PostRequest<HomePageParam> postRequest) {
+        int lastVideoIndex = postRequest.getParam().getLastVideoIndex();
 
         Result<Integer> articleVideoCount = articleService.countArticleVideo();
         if (!articleVideoCount.isSuccess()) {
@@ -110,14 +113,11 @@ public class BitController extends BaseController {
 
     @RequestMapping("detail")
     @ResponseBody
-    public Result detail(HttpServletRequest request) {
-        String articleId = StringUtils.trimToEmpty(request.getParameter("articleId"));
-        if (StringUtils.isBlank(articleId)) {
-            return Result.error(Result.CodeEnum.PARAM_ERROR);
-        }
+    public Result detail(HttpServletRequest request, @RequestBody PostRequest<VideoDetailParam> postRequest) {
 
+        int articleId = postRequest.getParam().getArticleVideoId();
 
-        Result<ArticleVideoDTO> result = articleService.getArticleDetail(NumberUtils.toInt(articleId));
+        Result<ArticleVideoDTO> result = articleService.getArticleDetail(articleId);
 
 
         if (result.isSuccess()) {
