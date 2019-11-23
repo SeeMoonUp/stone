@@ -52,4 +52,13 @@ public class VideoService {
             return Result.error(Result.CodeEnum.SERVICE_ERROR);
         }
     }
+
+    public Result<VideoDTO> getVideoById(int videoId) {
+        try {
+            VideoDTO videoDTO = videoDao.getVideoById(videoId);
+            return Result.success(videoDTO);
+        } catch (Exception e) {
+            return Result.error(Result.CodeEnum.SERVICE_ERROR);
+        }
+    }
 }

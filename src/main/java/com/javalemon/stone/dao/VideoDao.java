@@ -29,4 +29,9 @@ public class VideoDao {
     public List<VideoDTO> searchList(String keyword) {
         return videoMapper.searchList(keyword);
     }
+
+    public VideoDTO getVideoById(int videoId) {
+        return videoMapper.getVideoById(videoId);
+    }
+
 }

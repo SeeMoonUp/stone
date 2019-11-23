@@ -6,6 +6,7 @@ import com.javalemon.stone.dao.ArticleDao;
 import com.javalemon.stone.dao.VideoDao;
 import com.javalemon.stone.model.dto.ArticleVideoDTO;
 import com.javalemon.stone.model.dto.VideoDTO;
+import com.javalemon.stone.model.param.Page;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
@@ -50,6 +51,17 @@ public class ArticleService {
         }
     }
 
+    public Result<List<ArticleVideoDTO>> listPageArticleVideo(Page page) {
+        try {
+            List<ArticleVideoDTO> videoDTOS = articleDao.listPageArticleVideo(page);
+            return Result.success(videoDTOS);
+        } catch (Exception e) {
+            e.printStackTrace();
+            LOGGER.error("listPageArticleVideo error", e);
+            return Result.error(Result.CodeEnum.SERVICE_ERROR);
+        }
+    }
+
     public Result<ArticleVideoDTO> getArticleDetail(int articleId) {
         try {
             ArticleVideoDTO videoDTO = articleDao.getArticleDetail(articleId);
@@ -72,6 +84,17 @@ public class ArticleService {
         } catch (Exception e) {
             e.printStackTrace();
             LOGGER.error("updateArticleVideo error", e);
+            return Result.error(Result.CodeEnum.SERVICE_ERROR);
+        }
+    }
+
+    public Result<Integer> countArticleVideo() {
+        try {
+            int count = articleDao.countArticleVideo();
+            return Result.success(count);
+        } catch (Exception e) {
+            e.printStackTrace();
+            LOGGER.error("countArticleVideo error", e);
             return Result.error(Result.CodeEnum.SERVICE_ERROR);
         }
     }

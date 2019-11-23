@@ -26,8 +26,16 @@
         select * from bit_article_video order by id desc
     </select>
 
+    <select id="listPageArticleVideo" resultType="com.javalemon.stone.model.dto.ArticleVideoDTO" parameterType="com.javalemon.stone.model.param.Page">
+        select * from bit_article_video order by id limit desc #{start}, #{limit}
+    </select>
+
     <select id="getArticleDetail" resultType="com.javalemon.stone.model.dto.ArticleVideoDTO">
         select * from bit_article_video where id = #{articleId}
+    </select>
+
+    <select id="countArticleVideo" resultType="com.javalemon.stone.model.dto.ArticleVideoDTO">
+        select count(*) from bit_article_video
     </select>
 
 </mapper>

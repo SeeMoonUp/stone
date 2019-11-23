@@ -17,4 +17,8 @@
         select * from bit_video where title like "%"#{keyword}"%" order by id desc
     </select>
 
+    <select id="getVideoById" resultType="com.javalemon.stone.model.dto.VideoDTO">
+        select * from bit_video where id = #{videoId}
+    </select>
+
 </mapper>
