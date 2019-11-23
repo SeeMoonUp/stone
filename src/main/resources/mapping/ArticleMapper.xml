@@ -34,7 +34,7 @@
         select * from bit_article_video where id = #{articleId}
     </select>
 
-    <select id="countArticleVideo" resultType="com.javalemon.stone.model.dto.ArticleVideoDTO">
+    <select id="countArticleVideo" resultType="int">
         select count(*) from bit_article_video
     </select>
 
