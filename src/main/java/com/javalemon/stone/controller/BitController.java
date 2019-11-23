@@ -8,30 +8,22 @@ import com.javalemon.stone.model.param.HomePageParam;
 import com.javalemon.stone.model.param.Page;
 import com.javalemon.stone.model.param.PostRequest;
 import com.javalemon.stone.model.param.VideoDetailParam;
-import com.javalemon.stone.model.vo.article.ArticleVideoListVO;
 import com.javalemon.stone.model.vo.bit.ArticleDetailVO;
 import com.javalemon.stone.model.vo.bit.ArticleVideoVO;
 import com.javalemon.stone.model.vo.bit.HomePageVO;
-import com.javalemon.stone.model.vo.bit.WeekHotVO;
 import com.javalemon.stone.service.ArticleService;
 import com.javalemon.stone.service.VideoService;
-import org.apache.commons.lang.StringUtils;
-import org.apache.commons.lang.math.NumberUtils;
 import org.joda.time.DateTime;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.stereotype.Controller;
 import org.springframework.util.CollectionUtils;
-import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
-import org.thymeleaf.expression.Lists;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
-import javax.xml.soap.Detail;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 /**
