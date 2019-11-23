@@ -9,6 +9,7 @@ import com.javalemon.stone.model.param.Page;
 import com.javalemon.stone.model.param.PostRequest;
 import com.javalemon.stone.model.param.VideoDetailParam;
 import com.javalemon.stone.model.vo.article.ArticleVideoListVO;
+import com.javalemon.stone.model.vo.bit.ArticleDetailVO;
 import com.javalemon.stone.model.vo.bit.ArticleVideoVO;
 import com.javalemon.stone.model.vo.bit.HomePageVO;
 import com.javalemon.stone.model.vo.bit.WeekHotVO;
@@ -24,9 +25,11 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.thymeleaf.expression.Lists;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
+import javax.xml.soap.Detail;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -131,10 +134,48 @@ public class BitController extends BaseController {
 
             ArticleVideoVO articleVideoVO = buildArticleVideoVO(articleVideoDTO, videoRes.getData());
 
-            return Result.success(articleVideoVO);
+            List<ArticleVideoVO> relationVideos = getRelationVideos(articleVideoDTO.getId());
+
+            ArticleDetailVO data = ArticleDetailVO.builder().detailInfo(articleVideoVO).relationVideos(relationVideos).build();
+
+            return Result.success(data);
         }
 
         return Result.error(Result.CodeEnum.SERVICE_ERROR);
+    }
+
+    private List<ArticleVideoVO> getRelationVideos(int articleVideoId) {
+        Result<List<ArticleVideoDTO>> videosRes = articleService.listPageArticleVideo(
+                Page.builder().start(0).limit(homePageNum).build()
+        );
+        if (videosRes.isSuccess()) {
+            List<ArticleVideoDTO> articleVideoDTOS = videosRes.getData();
+            if (CollectionUtils.isEmpty(articleVideoDTOS)) {
+                return new ArrayList<>();
+            }
+
+            List<ArticleVideoVO> articleVideoVOS = new ArrayList<>();
+            for (ArticleVideoDTO articleVideoDTO : articleVideoDTOS) {
+
+                if (articleVideoDTO.getId() == articleVideoId) {
+                    continue;
+                }
+
+                Result<VideoDTO> videoRes = videoService.getVideoById(articleVideoDTO.getVideoId());
+                if (!videoRes.isSuccess() || videoRes.getData() == null) {
+                    continue;
+                }
+
+                ArticleVideoVO articleVideoVO = buildArticleVideoVO(articleVideoDTO, videoRes.getData());
+
+                articleVideoVOS.add(articleVideoVO);
+
+            }
+
+            return articleVideoVOS;
+        }
+
+        return new ArrayList<>();
     }
 
     private ArticleVideoVO buildArticleVideoVO(ArticleVideoDTO articleVideoDTO, VideoDTO videoDTO) {
