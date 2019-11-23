@@ -27,7 +27,7 @@
     </select>
 
     <select id="listPageArticleVideo" resultType="com.javalemon.stone.model.dto.ArticleVideoDTO" parameterType="com.javalemon.stone.model.param.Page">
-        select * from bit_article_video order by id limit desc #{start}, #{limit}
+        select * from bit_article_video order by id desc limit #{start}, #{limit}
     </select>
 
     <select id="getArticleDetail" resultType="com.javalemon.stone.model.dto.ArticleVideoDTO">
