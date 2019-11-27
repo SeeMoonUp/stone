@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="https://cdn.staticfile.org/jquery/1.10.2/jquery.min.js" />
+
+</head>
+<body>
+
+<div id="myDiv"><h2>通过 AJAX 改变文本</h2></div>
+<button id="b01" type="button">触发请求</button>
+
+<script type="text/javascript">
+    $(document).ready(function(){
+        $("#b01").click(function(){
+            $.ajax({
+                url:"https://bitxueyuan.com/bit/home",
+                dataType:"json",
+                type:"post",
+                data:{
+                    "common":{
+                        "token":"SHUXuxauxk",
+                        "deviceId":"SHUXuxauxk",
+                    },
+                    "params":{
+                        "lastVideoIndex":0 //分页信息，必传从0开始
+                    }
+                },
+                success:function(result){
+                    console.log(JSON.stringify(result));
+                }
+            });
+        });
+    });
+</script>
+</body>
+
+</html>

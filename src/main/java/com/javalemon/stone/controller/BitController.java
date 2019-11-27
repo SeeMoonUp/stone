@@ -16,7 +16,9 @@ import com.javalemon.stone.service.VideoService;
 import org.joda.time.DateTime;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.util.CollectionUtils;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -49,6 +51,12 @@ public class BitController extends BaseController {
     VideoService videoService;
 
     private final static int homePageNum = 10;
+
+    @GetMapping("/test")
+    public String index(HttpServletRequest request, Model model) {
+
+        return "test";
+    }
 
     @RequestMapping("home")
     @ResponseBody
