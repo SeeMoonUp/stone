@@ -49,6 +49,9 @@ public class Result<T> {
         NO_LOGIN(5, "未登录"),
         PASS_ERROR(6, "密码或用户名错误"),
         PARAM_ERROR(7, "参数错误"),
+        WECHAT_AUTH_ERROR(8, "微信授权登录失败"),
+        MP_LOGIN_ERROR(9, "登录失败"),
+        NO_USER_ERROR(10, "用户未登录"),
         ;
 
         private int code;

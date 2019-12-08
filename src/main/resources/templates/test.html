@@ -3,23 +3,25 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
-    <script src="https://cdn.staticfile.org/jquery/1.10.2/jquery.min.js" />
+    <script src="https://cdn.staticfile.org/jquery/1.10.2/jquery.min.js"></script>
     <script type="text/javascript">
         $(document).ready(function(){
+            var param = {
+                "commonParam":{
+                    "token":"SHUXuxauxk",
+                    "deviceId":"SHUXuxauxk",
+                },
+                "param":{
+                    "lastVideoIndex":0 //分页信息，必传从0开始
+                }
+            };
             $("#b01").click(function(){
                 $.ajax({
-                    url:"https://bitxueyuan.com/bit/home",
+                    url:"https://www.bitxueyuan.com/bit/home",
                     dataType:"json",
                     type:"post",
-                    data:{
-                        "common":{
-                            "token":"SHUXuxauxk",
-                            "deviceId":"SHUXuxauxk",
-                        },
-                        "params":{
-                            "lastVideoIndex":0 //分页信息，必传从0开始
-                        }
-                    },
+                    contentType: "application/json;charset=utf-8",
+                    data:JSON.stringify(param),
                     success:function(result){
                         console.log(JSON.stringify(result));
                     }

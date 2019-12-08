@@ -12,4 +12,10 @@ public interface UserMapper {
     UserDTO getUser(int userId);
 
     UserDTO getUserByEmail(String email);
+
+    UserDTO getUserByOpenId(String openId);
+
+    UserDTO getUserByToken(String token);
+
+    int updateUserInfo(UserDTO userDTO);
 }

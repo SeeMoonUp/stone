@@ -13,11 +13,16 @@ CREATE TABLE `guide_message` (
 ) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
 
 #用户表
-CREATE TABLE `guide_user` (
+CREATE TABLE `bit_user` (
   `id` int(32) NOT NULL AUTO_INCREMENT,
   `name` varchar(64) NOT NULL,
-  `email` varchar(128) NOT NULL,
-  `password` varchar(256) NOT NULL,
+  `nickName` varchar(64) DEFAULT '',
+  `avatarUrl` varchar(256) DEFAULT '',
+  `email` varchar(128) DEFAULT '',
+  `password` varchar(256) DEFAULT '',
+  `sessionKey` varchar(256) DEFAULT '',
+  `unionId` varchar(256) DEFAULT '',
+  `openId` varchar(256) DEFAULT '',
   `createTime` DATETIME NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;

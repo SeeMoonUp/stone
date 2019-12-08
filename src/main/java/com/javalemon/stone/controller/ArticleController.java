@@ -2,11 +2,14 @@ package com.javalemon.stone.controller;
 
 import com.javalemon.stone.common.Result;
 import com.javalemon.stone.common.utils.web.CookieUtils;
+import com.javalemon.stone.common.utils.wechat.MPUtil;
 import com.javalemon.stone.model.dto.ArticleVideoDTO;
 import com.javalemon.stone.model.vo.article.ArticleVideoListVO;
 import com.javalemon.stone.service.ArticleService;
 import org.apache.commons.lang.StringUtils;
 import org.apache.commons.lang.math.NumberUtils;
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
 import org.slf4j.Logger;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.stereotype.Controller;
@@ -30,7 +33,7 @@ import java.util.List;
 @RequestMapping("article")
 public class ArticleController {
 
-    private static final org.apache.log4j.Logger LOGGER = org.apache.log4j.Logger.getLogger(ArticleController.class.getName());
+    public static final Log BIT_LOG = LogFactory.getLog(ArticleController.class.getName());
 
     @Resource
     ArticleService articleService;

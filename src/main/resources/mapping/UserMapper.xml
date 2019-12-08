@@ -5,16 +5,30 @@
 <mapper namespace="com.javalemon.stone.dao.mapper.UserMapper">
 
     <insert id="addUser"  parameterType="com.javalemon.stone.model.dto.UserDTO" useGeneratedKeys="true" keyProperty="id">
-        insert into guide_user (name, email, password, createTime)
-        VALUES (#{name}, #{email}, #{password}, #{createTime})
+        insert into bit_user (name, nickName, avatarUrl, email, password, accessToken, sessionKey, unionId, openId, createTime)
+        VALUES (#{name}, #{nickName}, #{avatarUrl}, #{email}, #{password}, #{sessionKey}, #{unionId}, #{openId}, #{createTime})
     </insert>
 
     <select id="getUser" resultType="com.javalemon.stone.model.dto.UserDTO">
-        select * from guide_user where id = #{userId}
+        select * from bit_user where id = #{userId}
     </select>
 
     <select id="getUserByEmail" resultType="com.javalemon.stone.model.dto.UserDTO">
-        select * from guide_user where email = #{email}
+        select * from bit_user where email = #{email}
     </select>
+
+    <select id="getUserByOpenId" resultType="com.javalemon.stone.model.dto.UserDTO">
+        select * from bit_user where openId = #{openId}
+    </select>
+
+    <select id="getUserByToken" resultType="com.javalemon.stone.model.dto.UserDTO">
+        select * from bit_user where accessToken = #{token}
+    </select>
+
+    <update id="updateUserInfo" parameterType="com.javalemon.stone.model.dto.UserDTO">
+        UPDATE bit_user
+        set nickName = #{nickName}, avatarUrl = #{avatarUrl}
+        where id = #{id}
+    </update>
 
 </mapper>

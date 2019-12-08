@@ -25,4 +25,16 @@ public class UserDao {
     public UserDTO getUserByEmail(String email) {
         return userMapper.getUserByEmail(email);
     }
+
+    public UserDTO getUserByOpenId(String openId) {
+        return userMapper.getUserByOpenId(openId);
+    }
+
+    public UserDTO getUserByToken(String token) {
+        return userMapper.getUserByToken(token);
+    }
+
+    public int updateUserInfo(UserDTO userDTO) {
+        return userMapper.updateUserInfo(userDTO);
+    }
 }

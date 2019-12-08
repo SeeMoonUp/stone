@@ -20,7 +20,13 @@ import java.util.Date;
 public class UserDTO {
     private int id;
     private String name;
+    private String nickName;
+    private String avatarUrl;
     private String email;
     private String password;
+    private String accessToken;
+    private String sessionKey;
+    private String unionId;
+    private String openId;
     private Date createTime;
 }
