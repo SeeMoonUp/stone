@@ -3,11 +3,10 @@
  */
 package com.javalemon.stone.common.utils.web;
 
-import cc.laowantong.utils.IntegerUtil;
-import cc.laowantong.utils.log.QMPLogger;
-import cc.laowantong.utils.web.https.TrustAnyTrustManager;
-import net.sf.json.JSONObject;
+import com.alibaba.fastjson.JSONObject;
+import com.javalemon.stone.common.utils.web.https.TrustAnyTrustManager;
 import org.apache.commons.lang.StringUtils;
+import org.apache.commons.lang.math.NumberUtils;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.apache.http.*;
@@ -201,34 +200,16 @@ public class URLConnUtil {
 
 			queryURL = excludeSensitiveParams(excludeParams, queryURL);
 		} catch (UnsupportedEncodingException e) {
-			GCW_LOG.error(QMPLogger.prepareHttpLogContent(GET,
-					queryURL, url, System.currentTimeMillis() - startTime,
-					statusCode, respContent, ifLogging), e);
 			return EXCEPTION_MAP.get("UNSUPPORT_ENCODING_EXCEPTION");
 		} catch (ClientProtocolException e) {
-			GCW_LOG.error(QMPLogger.prepareHttpLogContent(GET,
-					queryURL, url, System.currentTimeMillis() - startTime,
-					statusCode, respContent, ifLogging), e);
 			return EXCEPTION_MAP.get("CLIENT_PROTOCOL_EXCEPTION");
 		} catch (ParseException e) {
-			GCW_LOG.error(QMPLogger.prepareHttpLogContent(GET,
-					queryURL, url, System.currentTimeMillis() - startTime,
-					statusCode, respContent, ifLogging), e);
 			return EXCEPTION_MAP.get("PARSE_EXCEPTION");
 		} catch (IOException e) {
-			GCW_LOG.error(QMPLogger.prepareHttpLogContent(GET,
-					queryURL, url, System.currentTimeMillis() - startTime,
-					statusCode, respContent, ifLogging), e);
 			return EXCEPTION_MAP.get("IO_EXCEPTION");
 		} catch (URISyntaxException e) {
-			GCW_LOG.error(QMPLogger.prepareHttpLogContent(GET,
-					queryURL, url, System.currentTimeMillis() - startTime,
-					statusCode, respContent, ifLogging), e);
 			return EXCEPTION_MAP.get("URI_SYNTAX_EXCEPTION");
 		} catch (Exception e) {
-			GCW_LOG.error(QMPLogger.prepareHttpLogContent(GET,
-					queryURL, url, System.currentTimeMillis() - startTime,
-					statusCode, respContent, ifLogging), e);
 			return EXCEPTION_MAP.get("EXCEPTION");
 		} finally {
 			// 关闭资源
@@ -239,9 +220,6 @@ public class URLConnUtil {
 				httpclient.getConnectionManager().shutdown();
 			}
 		}
-		GCW_LOG.debug(QMPLogger.prepareHttpLogContent(GET, queryURL,
-				url, System.currentTimeMillis() - startTime, statusCode,
-				respContent, ifLogging));
 		return respContent;
 	}
 
@@ -370,29 +348,14 @@ public class URLConnUtil {
 
 			queryURL = excludeSensitiveParams(excludeParams, queryURL);
 		} catch (UnsupportedEncodingException e) {
-			GCW_LOG.error(QMPLogger.prepareHttpLogContent(POST,
-					queryURL, url, System.currentTimeMillis() - startTime,
-					statusCode, respContent, ifLogging), e);
 			return EXCEPTION_MAP.get("UNSUPPORT_ENCODING_EXCEPTION");
 		} catch (ClientProtocolException e) {
-			GCW_LOG.error(QMPLogger.prepareHttpLogContent(POST,
-					queryURL, url, System.currentTimeMillis() - startTime,
-					statusCode, respContent, ifLogging), e);
 			return EXCEPTION_MAP.get("CLIENT_PROTOCOL_EXCEPTION");
 		} catch (ParseException e) {
-			GCW_LOG.error(QMPLogger.prepareHttpLogContent(POST,
-					queryURL, url, System.currentTimeMillis() - startTime,
-					statusCode, respContent, ifLogging), e);
 			return EXCEPTION_MAP.get("PARSE_EXCEPTION");
 		} catch (IOException e) {
-			GCW_LOG.error(QMPLogger.prepareHttpLogContent(POST,
-					queryURL, url, System.currentTimeMillis() - startTime,
-					statusCode, respContent, ifLogging), e);
 			return EXCEPTION_MAP.get("IO_EXCEPTION");
 		} catch (Exception e) {
-			GCW_LOG.error(QMPLogger.prepareHttpLogContent(POST,
-					queryURL, url, System.currentTimeMillis() - startTime,
-					statusCode, respContent, ifLogging), e);
 			return EXCEPTION_MAP.get("EXCEPTION");
 		} finally {
 			// 关闭资源
@@ -403,9 +366,6 @@ public class URLConnUtil {
 				httpclient.getConnectionManager().shutdown();
 			}
 		}
-		GCW_LOG.debug(QMPLogger.prepareHttpLogContent(POST,
-				queryURL, url, System.currentTimeMillis() - startTime,
-				statusCode, respContent, ifLogging));
 		return respContent;
 	}
 
@@ -534,34 +494,16 @@ public class URLConnUtil {
 
 			queryURL = excludeSensitiveParams(excludeParams, queryURL);
 		} catch (UnsupportedEncodingException e) {
-			GCW_LOG.error(QMPLogger.prepareHttpLogContent(GET,
-					queryURL, url, System.currentTimeMillis() - startTime,
-					statusCode, respContent, ifLogging), e);
 			return EXCEPTION_MAP.get("UNSUPPORT_ENCODING_EXCEPTION");
 		} catch (ClientProtocolException e) {
-			GCW_LOG.error(QMPLogger.prepareHttpLogContent(GET,
-					queryURL, url, System.currentTimeMillis() - startTime,
-					statusCode, respContent, ifLogging), e);
 			return EXCEPTION_MAP.get("CLIENT_PROTOCOL_EXCEPTION");
 		} catch (ParseException e) {
-			GCW_LOG.error(QMPLogger.prepareHttpLogContent(GET,
-					queryURL, url, System.currentTimeMillis() - startTime,
-					statusCode, respContent, ifLogging), e);
 			return EXCEPTION_MAP.get("PARSE_EXCEPTION");
 		} catch (IOException e) {
-			GCW_LOG.error(QMPLogger.prepareHttpLogContent(GET,
-					queryURL, url, System.currentTimeMillis() - startTime,
-					statusCode, respContent, ifLogging), e);
 			return EXCEPTION_MAP.get("IO_EXCEPTION");
 		} catch (URISyntaxException e) {
-			GCW_LOG.error(QMPLogger.prepareHttpLogContent(GET,
-					queryURL, url, System.currentTimeMillis() - startTime,
-					statusCode, respContent, ifLogging), e);
 			return EXCEPTION_MAP.get("URI_SYNTAX_EXCEPTION");
 		} catch (Exception e) {
-			GCW_LOG.error(QMPLogger.prepareHttpLogContent(GET,
-					queryURL, url, System.currentTimeMillis() - startTime,
-					statusCode, respContent, ifLogging), e);
 			return EXCEPTION_MAP.get("EXCEPTION");
 		} finally {
 			// 关闭资源
@@ -572,9 +514,6 @@ public class URLConnUtil {
 				httpclient.getConnectionManager().shutdown();
 			}
 		}
-		GCW_LOG.debug(QMPLogger.prepareHttpLogContent(GET, queryURL,
-				url, System.currentTimeMillis() - startTime, statusCode,
-				respContent, ifLogging));
 		return respContent;
 	}
 
@@ -704,29 +643,14 @@ public class URLConnUtil {
 
 			queryURL = excludeSensitiveParams(excludeParams, queryURL);
 		} catch (UnsupportedEncodingException e) {
-			GCW_LOG.error(QMPLogger.prepareHttpLogContent(POST,
-					queryURL, url, System.currentTimeMillis() - startTime,
-					statusCode, respContent, ifLogging), e);
 			return EXCEPTION_MAP.get("UNSUPPORT_ENCODING_EXCEPTION");
 		} catch (ClientProtocolException e) {
-			GCW_LOG.error(QMPLogger.prepareHttpLogContent(POST,
-					queryURL, url, System.currentTimeMillis() - startTime,
-					statusCode, respContent, ifLogging), e);
 			return EXCEPTION_MAP.get("CLIENT_PROTOCOL_EXCEPTION");
 		} catch (ParseException e) {
-			GCW_LOG.error(QMPLogger.prepareHttpLogContent(POST,
-					queryURL, url, System.currentTimeMillis() - startTime,
-					statusCode, respContent, ifLogging), e);
 			return EXCEPTION_MAP.get("PARSE_EXCEPTION");
 		} catch (IOException e) {
-			GCW_LOG.error(QMPLogger.prepareHttpLogContent(POST,
-					queryURL, url, System.currentTimeMillis() - startTime,
-					statusCode, respContent, ifLogging), e);
 			return EXCEPTION_MAP.get("IO_EXCEPTION");
 		} catch (Exception e) {
-			GCW_LOG.error(QMPLogger.prepareHttpLogContent(POST,
-					queryURL, url, System.currentTimeMillis() - startTime,
-					statusCode, respContent, ifLogging), e);
 			return EXCEPTION_MAP.get("EXCEPTION");
 		} finally {
 			// 关闭资源
@@ -737,9 +661,6 @@ public class URLConnUtil {
 				httpclient.getConnectionManager().shutdown();
 			}
 		}
-		GCW_LOG.info(QMPLogger.prepareHttpLogContent(POST,
-				queryURL, url, System.currentTimeMillis() - startTime,
-				statusCode, respContent, ifLogging));
 		return respContent;
 	}
 
@@ -1022,7 +943,7 @@ public class URLConnUtil {
 			input.close();
 			input = null;
 			connection.disconnect();
-			jsonObject = JSONObject.fromObject(buffer.toString());
+			jsonObject = JSONObject.parseObject(buffer.toString());
 		} catch (Exception e) {
 		}
 		return jsonObject;
@@ -1173,8 +1094,8 @@ public class URLConnUtil {
 //			System.setProperty("sun.net.client.defaultConnectTimeout", "1000 * 60 * 30");
 //			System.setProperty("sun.net.client.defaultReadTimeout", "1000 * 60 * 30");
 
-			Integer blockNumber = IntegerUtil.parseString2Int(params.get("blockNumber"));
-			Integer blockIndex = IntegerUtil.parseString2Int(params.get("blockIndex"));
+			Integer blockNumber = NumberUtils.toInt(params.get("blockNumber"));
+			Integer blockIndex = NumberUtils.toInt(params.get("blockIndex"));
 
 //			BlockStreamBody contentBody = new BlockStreamBody(blockNumber, blockIndex, targetFile);
 			FileBody fileBody = new FileBody(targetFile);

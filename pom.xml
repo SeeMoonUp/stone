@@ -63,6 +63,12 @@
 			<version>1.2.61</version>
 		</dependency>
 
+		<dependency>
+			<groupId>org.apache.httpcomponents</groupId>
+			<artifactId>httpmime</artifactId>
+			<version>4.5.3</version>
+		</dependency>
+
 		<!-- mybatis start -->
 		<dependency>
 			<groupId>org.mybatis.spring.boot</groupId>
