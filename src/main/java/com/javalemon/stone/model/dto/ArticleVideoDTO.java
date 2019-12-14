@@ -22,6 +22,7 @@ public class ArticleVideoDTO {
 
     private int id;
     private int videoId;
+    private String videoImg;
     private String title;
     private String mdContent;
     private String content;

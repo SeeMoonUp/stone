@@ -5,14 +5,15 @@
 <mapper namespace="com.javalemon.stone.dao.mapper.ArticleMapper">
 
     <insert id="addArticleVideo"  parameterType="com.javalemon.stone.model.dto.ArticleVideoDTO" useGeneratedKeys="true" keyProperty="id">
-        insert into bit_article_video (id, videoId, title, mdContent, content, `desc`, displayTime, importance, likeNum, viewNum)
-        VALUES (#{id}, #{videoId}, #{title}, #{mdContent}, #{content}, #{desc}, #{displayTime}, #{importance}, #{likeNum}, #{viewNum})
+        insert into bit_article_video (id, videoId, videoImg, title, mdContent, content, `desc`, displayTime, importance, likeNum, viewNum)
+        VALUES (#{id}, #{videoId}, #{videoImg}, #{title}, #{mdContent}, #{content}, #{desc}, #{displayTime}, #{importance}, #{likeNum}, #{viewNum})
     </insert>
 
     <update id="updateArticleVideo"  parameterType="com.javalemon.stone.model.dto.ArticleVideoDTO">
         update bit_article_video set
         title = #{title},
         mdContent = #{mdContent},
+        videoImg = #{videoImg},
         content = #{content},
         `desc` = #{desc},
         displayTime = #{displayTime},
