@@ -186,6 +186,7 @@ public class BitController extends BaseController {
                 .id(articleVideoDTO.getId())
                 .videoId(articleVideoDTO.getVideoId())
                 .videoUrl(QiniuUtils.getVideoUrl(videoDTO.getQiniuKey()))
+                .videoImg(QiniuUtils.getVideoUrl(articleVideoDTO.getVideoImg()))
                 .title(articleVideoDTO.getTitle())
                 .mdContent(articleVideoDTO.getMdContent())
                 .content(articleVideoDTO.getContent())

@@ -22,6 +22,7 @@ public class ArticleVideoVO {
     private int id;
     private int videoId;
     private String videoUrl;
+    private String videoImg;
     private String title;
     private String mdContent;
     private String content;

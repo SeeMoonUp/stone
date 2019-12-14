@@ -61,6 +61,7 @@ CREATE TABLE `guide_article_video` (
   `id` int(32) NOT NULL AUTO_INCREMENT,
   `title` VARCHAR(128) NOT NULL,
   `videoId` int(32),
+  `videoImg` VARCHAR(128) DEFAULT '',
   `mdContent` TEXT NOT NULL,
   `content` TEXT NOT NULL,
   `desc` VARCHAR(128) NOT NULL,
